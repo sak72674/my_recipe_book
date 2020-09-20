@@ -1,0 +1,2 @@
+module Steps::ImagesHelper
+end
