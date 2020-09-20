@@ -1,0 +1,2 @@
+module Recipes::ImagesHelper
+end
