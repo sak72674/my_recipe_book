@@ -22,6 +22,10 @@ body {
   position: relative;
 }
 
+.contents--head {
+	display: inline-block;
+}
+
 .home--title {
 	display: flex;
 	justify-content: center;
@@ -111,4 +115,107 @@ body {
 
 .wrap--button__secondary-2 {
 	background-color: #FFF2CD;
+}
+
+.group {
+	width: 48%;
+	float: left;
+	margin: 0 1%;
+}
+
+.group--form {
+	margin: 10px 0;
+}
+
+.form {
+	background-color: #fffef9;
+	border: none;
+	border-bottom: solid 1px rgba(219,212,148,0.3);
+	outline: none;
+}
+
+.group--form__name {
+	width: 80%;
+	height: 50px;
+	transition: 0.3s ease-in-out;
+	font-size: 18px;
+}
+
+.group--form__select {
+	width: 15%;
+	height: 50px;
+	transition: 0.3s ease-in-out;
+	font-size: 16px;
+}
+
+.group--form__intro {
+	width: 40%;
+	height: 180px;
+	float: left;
+	margin-right: 20%;
+}
+
+.group--form__image {
+	width: 40%;
+	float: left;
+	margin: 10px 0;
+}
+
+.group--form__head {
+
+}
+
+.group--form__private {
+	display: inline-block;
+	margin-right: 5%;
+}
+
+.group--step-form {
+	height: 55px;
+}
+
+.group--step-form__step {
+	width: 60%;
+	height: 80px;
+	float: left;
+	margin-right: 5%;
+}
+
+.group--step-form__image {
+	float: left;
+}
+
+.scroll__secondary-1 {
+	width: 550px;
+	height: 300px;
+	overflow: auto;
+	background-color: #f6fae2;
+	margin-left: 5%;
+}
+
+.scroll__secondary-2 {
+	width: 90%;
+	height: 480px;
+	overflow: auto;
+	background-color: #fff9e7;
+	margin-left: 5%;
+}
+
+.image--button {
+	display: none !important;
+}
+
+.group--form__comment {
+	width: 60%;
+	height: 80px;
+	float: left;
+}
+
+.group--button {
+	float: left;
+	margin-left: 10%;
+}
+
+.group--button__secondary-1 {
+	background-color: #eff7c6;
 }
