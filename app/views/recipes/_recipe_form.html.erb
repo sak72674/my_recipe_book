@@ -1,0 +1,86 @@
+<%= nested_form_for(recipe) do |f| %>
+<!-- 左ページ（料理名、料理説明、料理写真、材料） -->
+	<div class="group">
+		<div class="group--form">
+			<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
+			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>
+		</div>
+		<div class="group--form">
+			<%= f.text_area :introduction, placeholder:"料理説明", class:"form group--form__intro" %>
+		</div>
+
+		<!-- 料理写真は今後増やす可能性を考え別テーブルで管理 -->
+		<div class="group--form__image">
+			<%= f.fields_for :images do |image| %>
+				<%= image.label :image do %>
+					<%= image_tag 'no.jpeg', height:"170px" %>
+					<%= image.attachment_field :image, class:"image--button" %>
+				<% end %>
+			<% end %>
+		</div>
+
+		<div class="group--form">
+			<h3 class="group--form__head">材料</h3>
+			<div class="scroll__secondary-1">
+			<%= f.fields_for :ingredients do |i| %>
+				<ul>
+					<li>
+						<%= i.text_field :ingredient, placeholder:"材料名", class:"form group--form__ingredient" %>
+						・・・
+						<%= i.text_field :quantity, placeholder:"分量", class:"form" %>
+						<%= f.link_to_remove '削除' %>
+					</li>
+				</ul>
+			<% end %>
+			<%= f.link_to_add '追加', :ingredients %>
+			</div>
+		</div>
+
+		<!-- 公開設定 -->
+		<div class="group-form">
+			<h3 class="group--form__private">公開設定</h3>
+			<div class="group--form__private">
+				<%= f.radio_button :is_private, true %>
+	      <%= f.label :is_private, "非公開" %>
+	      <%= f.radio_button :is_private, false %>
+	      <%= f.label :is_private, "公開" %>
+	    </div>
+    </div>
+	</div>
+
+
+<!-- 右ページ（作り方、コメント） -->
+	<div class="group">
+		<div class="group--form">
+			<h3 class="group--form__head">作り方</h3>
+			<div class="scroll__secondary-2">
+				<%= f.fields_for :steps do |s| %>
+					<ol class="group--step-form">
+						<li class="step-num">
+							<%= s.text_area :step, class:"form group--step-form__step" %>
+							<div class="group--step-form__image">
+							<%= s.fields_for :step_images do |image| %>
+								<%= image.label :step_image do %>
+									<%= image_tag 'no.jpeg', height:"80px" %>
+									<%= image.attachment_field :step_image, class:"image--button" %>
+								<% end %>
+							</div>
+							<% end %>
+							<%= s.link_to_add '追加', :step_images, style:"display: none;" %>
+						</li>
+					</ol>
+					<%= f.link_to_remove '削除' %>
+				<% end %>
+				<%= f.link_to_add '追加', :steps %>
+			</div>
+		</div>
+
+		<div class="group--form">
+			<%= f.text_area :comment, placeholder:"コメント（作るコツ、美味しく食べるポイントなど）", class:"form group--form__comment" %>
+		</div>
+		<div class="group--button">
+			<%= f.submit '完成！', class:"button group--button__secondary-1" %>
+	</div>
+<% end %>
+
+

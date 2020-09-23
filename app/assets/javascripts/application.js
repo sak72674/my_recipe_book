@@ -14,5 +14,20 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery_nested_form
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+// ネストされたフォームを同時で追加する
+$(document).on('nested:fieldAdded:steps', function(event){
+  var field = event.field;''
+  var addField = field.find('.add_nested_fields');
+  addField.click();
+})
+
+// 追加されたフォームに番号を表示する
+$(document).on('nested:fieldAdded', function(event){
+    var order = $(this).find('.step-num').length;
+    event.field.find('.step-num').val(order);
+})
