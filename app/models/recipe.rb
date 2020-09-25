@@ -10,4 +10,13 @@ class Recipe < ApplicationRecord
 	has_many :steps, dependent: :destroy
 	accepts_nested_attributes_for :steps, allow_destroy: :true
 
+	validates_associated :ingredients
+	validates_associated :steps
+
+	validates :name, presence: true
+	validates :introduction, presence: true
+	validates :comment, presence: true
+	validates :how_many, presence: true
+	validates :is_private, inclusion: {in: [true, false]}
+
 end
