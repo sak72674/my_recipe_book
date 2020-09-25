@@ -152,17 +152,22 @@ body {
 	width: 40%;
 	height: 180px;
 	float: left;
-	margin-right: 20%;
+	margin-right: 5%;
+	margin-left: 5%;
 }
 
 .group--form__image {
 	width: 40%;
 	float: left;
-	margin: 10px 0;
+	margin: 10px 5%;
 }
 
-.group--form__head {
+.group--form__head, .contents--head {
+	font-family: "Sawarabi Mincho";
+}
 
+.group--form__head span {
+	font-size: 16px;
 }
 
 .group--form__private {
@@ -171,7 +176,8 @@ body {
 }
 
 .group--step-form {
-	height: 55px;
+	height: 80px;
+	margin-top: 2%;
 }
 
 .group--step-form__step {
@@ -183,6 +189,10 @@ body {
 
 .group--step-form__image {
 	float: left;
+}
+
+.group--form__ingredient {
+	margin-top: 2%;
 }
 
 .scroll__secondary-1 {

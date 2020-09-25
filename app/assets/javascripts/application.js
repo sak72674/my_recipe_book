@@ -19,15 +19,90 @@
 //= require_tree .
 
 
-// ネストされたフォームを同時で追加する
-$(document).on('nested:fieldAdded:steps', function(event){
-  var field = event.field;''
-  var addField = field.find('.add_nested_fields');
-  addField.click();
-})
 
 // 追加されたフォームに番号を表示する
-$(document).on('nested:fieldAdded', function(event){
+$(document).on('fieldAdded', function(event){
     var order = $(this).find('.step-num').length;
     event.field.find('.step-num').val(order);
 })
+
+// レシピ画像プレビュー機能
+$(function(){
+	$('.file').on('change', function(){
+		var file = $(this).prop('files')[0];
+		var reader = new FileReader();
+		reader.onload = function() {
+			$(".img").attr('src', reader.result);
+		}
+		reader.readAsDataURL(file);
+	});
+})
+
+// 手順画像プレビュー表示
+$(function () {
+  $('.step-file').on('change', function(){
+     var file = $(this).prop('files')[0];
+     var reader = new FileReader();
+
+    reader.onload = function() {
+      $('.step-img').attr('src', reader.result);
+    }
+    reader.readAsDataURL(file);
+  });
+})
+
+// 材料フォーム追加
+$(function(){
+	var count = 0;
+	$('#add').on('click', function(){
+		var original = $('#ingredient-field\\[' + count + '\\]');
+		var originCnt = count;
+
+		count++;
+
+		original.clone().appendTo(original).attr('id', 'ingredient-field[' + count + ']').end().find('input, text_field').each(function(i,t){
+			$(t).attr({
+				id: $(t).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
+				name: $(t).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']')
+			});
+			$(t).val('');
+		});
+	});
+})
+
+
+$(function(){
+	var count = 0;
+	$('#add2').on('click', function(){
+		var original = $('#step-field\\[' + count + '\\]');
+		var originCnt = count;
+
+		count++;
+
+		original.clone().appendTo(original).attr('id', 'step-field[' + count + ']').end().find('textarea, text_area').each(function(t,a,){
+			$(a).attr({
+				id: $(a).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
+				name: $(a).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']'),
+				id: $(a).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']')
+			});
+			$(a).val('');
+		});
+	});
+
+
+	// $('#add2').on('click', function(){
+	// 	var image = $('#step-image-field\\[' + count + '\\]');
+	// 	var imgCnt = count;
+
+	// 	count++;
+
+	// 	image.clone().appendTo(image).attr('id', 'step-image-field[' + count + ']').end().find('input, attachment_field').each(function(i,f){
+	// 		$(f).attr({
+	// 			id: $(f).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
+	// 			name: $(f).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']')
+	// 		});
+	// 		$(f).val('');
+	// 	});
+	// });
+})
+

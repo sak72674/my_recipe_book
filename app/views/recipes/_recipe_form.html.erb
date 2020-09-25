@@ -13,32 +13,33 @@
 		<div class="group--form__image">
 			<%= f.fields_for :images do |image| %>
 				<%= image.label :image do %>
-					<%= image_tag 'no.jpeg', height:"170px" %>
-					<%= image.attachment_field :image, class:"image--button" %>
+					<%= image_tag 'no.jpeg', height:"170px", class:"img" %>
+					<%= image.attachment_field :image, class:"file image--button" %>
 				<% end %>
 			<% end %>
 		</div>
 
 		<div class="group--form">
-			<h3 class="group--form__head">材料</h3>
+			<h3 class="group--form__head">材料<span>（<%= f.select :how_many, (1..10),{}, class:"form" %>人分）</span></h3>
 			<div class="scroll__secondary-1">
 			<%= f.fields_for :ingredients do |i| %>
+			<div id="ingredient-field[0]">
 				<ul>
 					<li>
-						<%= i.text_field :ingredient, placeholder:"材料名", class:"form group--form__ingredient" %>
+						<%= i.text_field :ingredient, placeholder:"材料名", name:"ingredient[0]", id:"ingredient[0]", class:"form group--form__ingredient" %>
 						・・・
-						<%= i.text_field :quantity, placeholder:"分量", class:"form" %>
-						<%= f.link_to_remove '削除' %>
+						<%= i.text_field :quantity, placeholder:"分量", name:"quantity[0]", id:"quantity[0]", class:"form" %>
 					</li>
 				</ul>
+			</div>
+			<div id="add">追加</div>
 			<% end %>
-			<%= f.link_to_add '追加', :ingredients %>
 			</div>
 		</div>
 
 		<!-- 公開設定 -->
 		<div class="group-form">
-			<h3 class="group--form__private">公開設定</h3>
+			<h3 class="group--form__head group--form__private">公開設定</h3>
 			<div class="group--form__private">
 				<%= f.radio_button :is_private, true %>
 	      <%= f.label :is_private, "非公開" %>
@@ -55,23 +56,23 @@
 			<h3 class="group--form__head">作り方</h3>
 			<div class="scroll__secondary-2">
 				<%= f.fields_for :steps do |s| %>
-					<ol class="group--step-form">
-						<li class="step-num">
-							<%= s.text_area :step, class:"form group--step-form__step" %>
-							<div class="group--step-form__image">
-							<%= s.fields_for :step_images do |image| %>
-								<%= image.label :step_image do %>
-									<%= image_tag 'no.jpeg', height:"80px" %>
-									<%= image.attachment_field :step_image, class:"image--button" %>
+					<div id="step-field[0]">
+						<ol class="group--step-form">
+							<li class="step-num">
+								<%= s.text_area :step, name:"step[0]", id:"step[0]", class:"form group--step-form__step" %>
+								<div class="group--step-form__image">
+								<%= s.fields_for :step_images do |image| %>
+									<%= image.label :step_image do %>
+										<%= image_tag 'no.jpeg', height:"80px", id:"step-img[0]", class:"step-img" %>
+										<%= image.attachment_field :step_image, class:"step-file image--button" %>
+									<% end %>
 								<% end %>
-							</div>
-							<% end %>
-							<%= s.link_to_add '追加', :step_images, style:"display: none;" %>
-						</li>
-					</ol>
-					<%= f.link_to_remove '削除' %>
+								</div>
+							</li>
+						</ol>
+					</div>
+				<div id="add2">追加</div>
 				<% end %>
-				<%= f.link_to_add '追加', :steps %>
 			</div>
 		</div>
 
