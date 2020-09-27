@@ -196,8 +196,8 @@ body {
 }
 
 .scroll__secondary-1 {
-	width: 550px;
-	height: 300px;
+	width: 500px;
+	height: 250px;
 	overflow: auto;
 	background-color: #f6fae2;
 	margin-left: 5%;

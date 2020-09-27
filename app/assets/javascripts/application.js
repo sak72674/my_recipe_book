@@ -20,11 +20,6 @@
 
 
 
-// 追加されたフォームに番号を表示する
-$(document).on('fieldAdded', function(event){
-    var order = $(this).find('.step-num').length;
-    event.field.find('.step-num').val(order);
-})
 
 // レシピ画像プレビュー機能
 $(function(){
@@ -60,7 +55,7 @@ $(function(){
 
 		count++;
 
-		original.clone().appendTo(original).attr('id', 'ingredient-field[' + count + ']').end().find('input, text_field').each(function(i,t){
+		original.clone().insertAfter(original).attr('id', 'ingredient-field[' + count + ']').end().find('input, text_field').each(function(i,t){
 			$(t).attr({
 				id: $(t).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
 				name: $(t).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']')
@@ -75,34 +70,30 @@ $(function(){
 	var count = 0;
 	$('#add2').on('click', function(){
 		var original = $('#step-field\\[' + count + '\\]');
-		var originCnt = count;
 
 		count++;
 
-		original.clone().appendTo(original).attr('id', 'step-field[' + count + ']').end().find('textarea, text_area').each(function(t,a,){
+		original.clone().insertAfter(original).attr('id', 'step-field[' + count + ']').end().find('textarea, text_area').each(function(t,a){
 			$(a).attr({
 				id: $(a).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
-				name: $(a).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']'),
-				id: $(a).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']')
+				name: $(a).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']')
 			});
 			$(a).val('');
 		});
+
+		// var image = $('#step-image-field\\[' + count + '\\]');
+		// var originCloned = original.clone()
+
+		// count++;
+
+		// image.clone().appendTo(originCloned).attr('id', 'step-image-field[' + count + ']').end().find('input, attachment_field').each(function(i,f){
+		// 	$(f).attr({
+		// 		id: $(f).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
+		// 		name: $(f).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']')
+		// 	});
+		// 	$(f).val('');
+		// });
 	});
-
-
-	// $('#add2').on('click', function(){
-	// 	var image = $('#step-image-field\\[' + count + '\\]');
-	// 	var imgCnt = count;
-
-	// 	count++;
-
-	// 	image.clone().appendTo(image).attr('id', 'step-image-field[' + count + ']').end().find('input, attachment_field').each(function(i,f){
-	// 		$(f).attr({
-	// 			id: $(f).attr('id').replace(/\[[0-9]\]+$/, '[' + count + ']'),
-	// 			name: $(f).attr('name').replace(/\[[0-9]\]+$/, '[' + count + ']')
-	// 		});
-	// 		$(f).val('');
-	// 	});
-	// });
 })
+
 
