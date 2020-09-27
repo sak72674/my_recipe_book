@@ -22,18 +22,18 @@
 		<div class="group--form">
 			<h3 class="group--form__head">材料<span>（<%= f.select :how_many, (1..10),{}, class:"form" %>人分）</span></h3>
 			<div class="scroll__secondary-1">
-			<%= f.fields_for :ingredients do |i| %>
-			<div id="ingredient-field[0]">
-				<ul>
-					<li>
-						<%= i.text_field :ingredient, placeholder:"材料名", name:"ingredient[0]", id:"ingredient[0]", class:"form group--form__ingredient" %>
-						・・・
-						<%= i.text_field :quantity, placeholder:"分量", name:"quantity[0]", id:"quantity[0]", class:"form" %>
-					</li>
-				</ul>
-			</div>
-			<div id="add">追加</div>
-			<% end %>
+				<%= f.fields_for :ingredients do |i| %>
+					<ul>
+						<div id="ingredient-field[0]">
+							<li>
+								<%= i.text_field :ingredient, placeholder:"材料名", name:"ingredient[0]", id:"ingredient[0]", class:"form group--form__ingredient" %>
+								・・・
+								<%= i.text_field :quantity, placeholder:"分量", name:"quantity[0]", id:"quantity[0]", class:"form" %>
+							</li>
+						</div>
+					</ul>
+					<div id="add">追加</div>
+				<% end %>
 			</div>
 		</div>
 
@@ -56,22 +56,20 @@
 			<h3 class="group--form__head">作り方</h3>
 			<div class="scroll__secondary-2">
 				<%= f.fields_for :steps do |s| %>
-					<div id="step-field[0]">
-						<ol class="group--step-form">
-							<li class="step-num">
+					<ol>
+						<div id="step-field[0]">
+							<li class="group--step-form">
 								<%= s.text_area :step, name:"step[0]", id:"step[0]", class:"form group--step-form__step" %>
 								<div class="group--step-form__image">
 								<%= s.fields_for :step_images do |image| %>
-									<%= image.label :step_image do %>
-										<%= image_tag 'no.jpeg', height:"80px", id:"step-img[0]", class:"step-img" %>
-										<%= image.attachment_field :step_image, class:"step-file image--button" %>
-									<% end %>
+									<%= image.label :step_image, 'クリックして画像選択', for:"recipe_steps_attributes_0_step_images_attributes_0_step_image" %>
+									<%= image.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images_attributes][0][step_image]", id:"recipe_steps_attributes_0_step_images_attributes_0_step_image", class:"step-file image--button" %>
 								<% end %>
 								</div>
 							</li>
-						</ol>
-					</div>
-				<div id="add2">追加</div>
+						</div>
+					</ol>
+					<div id="add2">追加</div>
 				<% end %>
 			</div>
 		</div>
