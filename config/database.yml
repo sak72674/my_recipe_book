@@ -21,8 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  <<: *default
   database: <%= ENV['DB_DATABASE'] %>
   adapter: mysql2
   encoding: utf8mb4

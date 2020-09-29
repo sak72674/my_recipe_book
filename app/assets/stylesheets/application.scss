@@ -17,3 +17,12 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.main {
+	width: 100vw;
+	height: 100vh;
+	background-image: image-url("back.jpeg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
