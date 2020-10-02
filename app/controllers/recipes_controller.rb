@@ -5,19 +5,17 @@ class RecipesController < ApplicationController
 	end
 
 	def new
-		@recipe =  Recipe.new
-		@recipe.images.build
-		@recipe.ingredients.build
-		@step = @recipe.steps.build
-		@step.step_images.build
+		@recipe_form =  RecipeForm.new
 	end
 
 	def create
-		@recipe = Recipe.new(recipe_params)
-		if @recipe.save
-			redirect_to recipes_path(@recipe.id)
+		@recipe_form = RecipeForm.new(recipe_params)
+		@recipe_form.user_id = current_user.id
+		binding.pry
+		if @recipe_form.save
+			redirect_to root_path
 		else
-			redirect_to new_recipe_path
+			render :new
 		end
 	end
 
@@ -44,28 +42,41 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(
+		params.require(:recipe_form).permit(
 			:user_id,
-			:genre_id,
-			:name,
-			:introduction,
-			:comment,
-			:how_many,
-			:is_private,
-			image_attributes: [:id,
-												 :recipe_id,
-												 :image_id],
-			ingredient_attributes: [:id,
-														  :recipe_id,
-														  :ingredient,
-														  :quantity],
-			step_attributes: [:id,
-											  :recipe_id,
-											  :steps,
-											  step_image_attributes: [:id,
-											                    		  :step_id,
-											                     			:step_image_id]]
-			)
+																				:genre_id,
+																				:name,
+																			  :introduction,
+																			  :comment,
+																			  :how_many,
+																			  :is_private,
+																			  :image,
+																			  :ingredient,
+																			  :quantity,
+																			  :step,
+																			  :step_image
+		)
+			# :user_id,
+			# :genre_id,
+			# :name,
+			# :introduction,
+			# :comment,
+			# :how_many,
+			# :is_private,
+			# image_attributes: [:id,
+			# 									 :recipe_id,
+			# 									 :image_id],
+			# ingredient_attributes: [:id,
+			# 											  :recipe_id,
+			# 											  :ingredient,
+			# 											  :quantity],
+			# step_attributes: [:id,
+			# 								  :recipe_id,
+			# 								  :steps,
+			# 								  step_image_attributes: [:id,
+			# 								                    		  :step_id,
+			# 								                     			:step_image_id]]
+			# )
 	end
 
 end
