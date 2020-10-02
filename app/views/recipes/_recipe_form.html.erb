@@ -1,6 +1,17 @@
-<%= nested_form_for(recipe) do |f| %>
+<%= form_with(model: recipe_form, url: recipes_path, local: true) do |f| %>
+
 <!-- 左ページ（料理名、料理説明、料理写真、材料） -->
 	<div class="group">
+		<% if recipe_form.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <% recipe_form.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+
 		<div class="group--form">
 			<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
 			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>
@@ -11,29 +22,25 @@
 
 		<!-- 料理写真は今後増やす可能性を考え別テーブルで管理 -->
 		<div class="group--form__image">
-			<%= f.fields_for :images do |image| %>
-				<%= image.label :image do %>
-					<%= image_tag 'no.jpeg', height:"170px", class:"img" %>
-					<%= image.attachment_field :image, class:"file image--button" %>
-				<% end %>
+			<%= f.label :image do %>
+				<%= image_tag 'no.jpeg', height:"170px", class:"img" %>
+				<%= f.file_field :image, class:"file image--button" %>
 			<% end %>
 		</div>
 
 		<div class="group--form">
 			<h3 class="group--form__head">材料<span>（<%= f.select :how_many, (1..10),{}, class:"form" %>人分）</span></h3>
 			<div class="scroll__secondary-1">
-				<%= f.fields_for :ingredients do |i| %>
-					<ul>
-						<div id="ingredient-field[0]">
-							<li>
-								<%= i.text_field :ingredient, placeholder:"材料名", name:"ingredient[0]", id:"ingredient[0]", class:"form group--form__ingredient" %>
-								・・・
-								<%= i.text_field :quantity, placeholder:"分量", name:"quantity[0]", id:"quantity[0]", class:"form" %>
-							</li>
-						</div>
-					</ul>
-					<div id="add">追加</div>
-				<% end %>
+				<ul>
+					<div id="ingredient-field[0]">
+						<li>
+							<%= f.text_field :ingredient, placeholder:"材料名", name:"ingredient[0]", id:"ingredient[0]", class:"form group--form__ingredient" %>
+							・・・
+							<%= f.text_field :quantity, placeholder:"分量", name:"quantity[0]", id:"quantity[0]", class:"form" %>
+						</li>
+					</div>
+				</ul>
+				<div id="add">追加</div>
 			</div>
 		</div>
 
@@ -41,7 +48,7 @@
 		<div class="group-form">
 			<h3 class="group--form__head group--form__private">公開設定</h3>
 			<div class="group--form__private">
-				<%= f.radio_button :is_private, true %>
+				<%= f.radio_button :is_private, true, checked: true %>
 	      <%= f.label :is_private, "非公開" %>
 	      <%= f.radio_button :is_private, false %>
 	      <%= f.label :is_private, "公開" %>
@@ -55,22 +62,19 @@
 		<div class="group--form">
 			<h3 class="group--form__head">作り方</h3>
 			<div class="scroll__secondary-2">
-				<%= f.fields_for :steps do |s| %>
-					<ol>
-						<div id="step-field[0]">
-							<li class="group--step-form">
-								<%= s.text_area :step, name:"step[0]", id:"step[0]", class:"form group--step-form__step" %>
-								<div class="group--step-form__image">
-								<%= s.fields_for :step_images do |image| %>
-									<%= image.label :step_image, 'クリックして画像選択', for:"recipe_steps_attributes_0_step_images_attributes_0_step_image" %>
-									<%= image.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images_attributes][0][step_image]", id:"recipe_steps_attributes_0_step_images_attributes_0_step_image", class:"step-file image--button" %>
-								<% end %>
-								</div>
-							</li>
-						</div>
-					</ol>
-					<div id="add2">追加</div>
-				<% end %>
+				<ol>
+					<div id="step-field[0]">
+						<li class="group--step-form">
+							<%= f.text_area :step, name:"step[0]", id:"step[0]", class:"form group--step-form__step" %>
+							<div class="group--step-form__image">
+								<%= f.label :step_image, 'クリックして画像選択', for:"recipe_steps_attributes_0_step_images_attributes_0_step_image" %>
+								<%= f.file_field :step_image, name:"recipe[steps_attributes][0][step_images_attributes][0][step_image]", id:"recipe_steps_attributes_0_step_images_attributes_0_step_image", class:"step-file image--button" %>
+							</div>
+						</li>
+					</div>
+				</ol>
+				<div id="add2">追加</div>
+
 			</div>
 		</div>
 
@@ -79,6 +83,7 @@
 		</div>
 		<div class="group--button">
 			<%= f.submit '完成！', class:"button group--button__secondary-1" %>
+		</div>
 	</div>
 <% end %>
 
