@@ -1,0 +1,19 @@
+<div class="main">
+	<div class="contents">
+		<h2 class="contents--head"><%= @bookmark.name %></h2>
+		<div>
+			<%= link_to @bookmark.genre.name, recipes_path %>
+		</div>
+		<div>
+			レシピ詳細（外部サイト）：<%= link_to @bookmark.url, url_for(@bookmark.url) %>
+		</div>
+		<div>
+			参考にしたサイト：<%= @bookmark.site %>
+		</div>
+		<div>
+			<%= link_to '編集する', edit_bookmark_path(@bookmark) %>
+		</div>
+		<div>
+			<%= link_to '削除する', bookmark_path(@bookmark), method: :delete, 'data-confirm' => "本当に削除しますか？" %>
+	</div>
+</div>
