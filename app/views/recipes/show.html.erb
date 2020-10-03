@@ -3,7 +3,7 @@
 		<h2 class="contents--head"><%= @recipe.name %>
 			<span><% if @recipe.is_private %>（非公開）<% else %>（公開中）<% end %></span>
 		</h2>
-		<div><%= @recipe.genre.name %></div>
+		<div><%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %></div>
 		<div class="group">
 			<div class="detail--intro">
 				<h3 class="detail--head">料理説明</h3>

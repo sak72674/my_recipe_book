@@ -40,4 +40,24 @@ class RecipeForm
 		# recipe.step_images.new(step_image: step_image)
 		recipe.save
 	end
+
+	def update
+		return false if invalid?
+
+		recipe = Recipe.new(user_id: user_id, genre_id: genre_id, name: name, introduction: introduction, comment: comment, how_many: how_many, is_private: is_private)
+		# recipe.images.new(image: image)
+		unless ingredient.nil?
+      ingredient.each do |k, v|
+        recipe.ingredients.new(ingredient: v, quantity: quantity[k])
+      end
+    end
+
+		unless step.nil?
+			step.each do |k, v|
+				recipe.steps.new(step: v)
+			end
+		end
+		# recipe.step_images.new(step_image: step_image)
+		recipe.update
+	end
 end

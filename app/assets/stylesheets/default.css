@@ -307,3 +307,20 @@ body {
 .group--button__edit {
 	margin-top: 10%;
 }
+
+.index {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.index--item {
+	width: 50%;
+	font-size: 24px;
+	margin: 40px 0;
+	float: left;
+}
+
+.pagination {
+	position: fixed;
+	bottom: 20%;
+}
