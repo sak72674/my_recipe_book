@@ -26,6 +26,10 @@ body {
 	display: inline-block;
 }
 
+.contents--head span {
+	font-size: 16px;
+}
+
 .home--title {
 	display: flex;
 	justify-content: center;
@@ -162,7 +166,7 @@ body {
 	margin: 10px 5%;
 }
 
-.group--form__head, .contents--head {
+.group--form__head, .contents--head, .detail--head {
 	font-family: "Sawarabi Mincho";
 }
 
@@ -228,4 +232,78 @@ body {
 
 .group--button__secondary-1 {
 	background-color: #eff7c6;
+}
+
+.group--button__secondary-2 {
+	background-color: #FFF2CD;
+}
+
+.detail--intro {
+	width: 45%;
+	height: 150px;
+	margin-right: 5%;
+	float: left;
+}
+
+.detail--image {
+	display: inline-block;
+}
+
+.detail--ingredients {
+	width: 90%;
+	height: 400px;
+	overflow: auto;
+	background-color: #f6fae2;
+	font-size: 18px;
+}
+
+.detail--ingredients__table {
+	width: 90%;
+	margin: 5%;
+}
+
+.detail--ingredients__table th, .detail--ingredients__table td {
+	border-top: solid 1px #ddd;
+	height: 2em;
+}
+
+.detail--steps {
+	width: 90%;
+	height: 400px;
+	overflow: auto;
+	background-color: #fff9e7;
+	font-size: 18px;
+}
+
+.detail--steps li {
+	border-top: solid 1px #ddd;
+	height: 100px;
+}
+
+.detail--steps__list {
+	margin: 3%;
+}
+
+.step__list-text {
+	width: 70%;
+	margin-right: 5%;
+	float: left;
+}
+
+.step__list-img {
+	padding-top: 1%;
+	float: left;
+}
+
+.detail--head {
+	border-bottom: solid 1px #ddd;
+}
+
+.detail--comment {
+	width: 50%;
+	float: left;
+}
+
+.group--button__edit {
+	margin-top: 10%;
 }
