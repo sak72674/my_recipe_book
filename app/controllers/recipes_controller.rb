@@ -1,19 +1,24 @@
 class RecipesController < ApplicationController
 
 	def index
-		@recieps = Recipe.all.order(:name)
-		@bookmarks = Bookmark.all.order(:name)
+		if params[:genre_id]
+      @recipes = current_user.recipes.where(genre_id: params[:genre_id]).order(:name).page(params[:page]).per(10)
+      @genre = Genre.find(params[:genre_id])
+    else
+    	@recipes = current_user.recipes.all.order(:name).page(params[:page]).per(10)
+    end
+		# @bookmarks = current_user.bookmarks.all.order(:name)
 	end
 
 	def new
-		@recipe_form =  RecipeForm.new
+		@recipe_form = RecipeForm.new
 	end
 
 	def create
 		@recipe_form = RecipeForm.new(recipe_params)
 		@recipe_form.user_id = current_user.id
 		if @recipe_form.save
-			redirect_to recipe_path(@recipe.id)
+			redirect_to recipes_path
 		else
 			render :new
 		end
@@ -26,14 +31,15 @@ class RecipesController < ApplicationController
 	end
 
 	def edit
-  recipe = Recipe.find(params[:id])
-  @recipe_form = RecipeForm.new(user_id: recipe.user_id, genre_id: recipe.genre_id, name: recipe.name, introduction: recipe.introduction, comment: recipe.comment, how_many: recipe.how_many, is_private: recipe.is_private)
-end
+  	recipe = Recipe.find(params[:id])
+  	@recipe_form = RecipeForm.new(user_id: recipe.user_id, genre_id: recipe.genre_id, name: recipe.name, introduction: recipe.introduction, comment: recipe.comment, how_many: recipe.how_many, is_private: recipe.is_private)
+	end
 
 	def update
-		@recipe = Recipe.find(params[:id])
+		recipe = Recipe.find(params[:id])
+		@recipe_form = RecipeForm.new(user_id: recipe.user_id, genre_id: recipe.genre_id, name: recipe.name, introduction: recipe.introduction, comment: recipe.comment, how_many: recipe.how_many, is_private: recipe.is_private)
 		if @recipe.update(recipe_params)
-			redirect_to recipe_path(@recipe.id)
+			redirect_to recipes_path
 		else
 			render :edit
 		end
