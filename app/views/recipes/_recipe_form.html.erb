@@ -67,8 +67,10 @@
 						<li class="group--step-form">
 							<%= f.text_area :step, name:"step[0]", id:"step[0]", class:"form group--step-form__step" %>
 							<div class="group--step-form__image">
-								<%= f.label :step_image, 'クリックして画像選択', for:"recipe_steps_attributes_0_step_images_attributes_0_step_image" %>
-								<%= f.file_field :step_image, name:"recipe[steps_attributes][0][step_images_attributes][0][step_image]", id:"recipe_steps_attributes_0_step_images_attributes_0_step_image", class:"step-file image--button" %>
+								<%= f.label :step_image do %>
+									<%= image_tag 'no.jpeg', height:"80px", class:"step-img" %>
+									<%= f.file_field :step_image, class:"step-file image--button" %>
+								<% end %>
 							</div>
 						</li>
 					</div>

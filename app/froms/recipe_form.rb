@@ -24,11 +24,20 @@ class RecipeForm
 	def save
 		return false if invalid?
 
-		recipe = recipe.new(user_id: user_id, genre_id: genre_id, name: name, introduction: introduction, comment: comment, how_many: how_many, is_private: is_private)
-		recipe.images.new(image_id: image_id)
-		recipe.ingredients.new(ingredient: ingredient, quantity: quantity)
-		recipe.steps.new(step: step)
-		recipe.step_images.new(step_image_id: step_image_id)
+		recipe = Recipe.new(user_id: user_id, genre_id: genre_id, name: name, introduction: introduction, comment: comment, how_many: how_many, is_private: is_private)
+		# recipe.images.new(image: image)
+		unless ingredient.nil?
+      ingredient.each do |k, v|
+        recipe.ingredients.new(ingredient: v, quantity: quantity[k])
+      end
+    end
+
+		unless step.nil?
+			step.each do |k, v|
+				recipe.steps.new(step: v)
+			end
+		end
+		# recipe.step_images.new(step_image: step_image)
 		recipe.save
 	end
 end
