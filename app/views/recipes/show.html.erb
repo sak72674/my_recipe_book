@@ -18,10 +18,10 @@
 						<th>材料</th>
 						<th>分量</th>
 					</tr>
-					<% @ingredient.each do |ingredient| %>
+					<% @recipe.ingredients.each do |ingredient| %>
 						<tr>
 							<td>
-								<%= ingredient.ingredient %>
+								<%= ingredient.name %>
 							</td>
 							<td>
 								<%= ingredient.quantity %>
@@ -36,10 +36,10 @@
 			<h3 class="group--form__head">作り方</h3>
 			<div class="detail--steps">
 				<ol class="detail--steps__list">
-					<% @step.each do |step| %>
+					<% @recipe.steps.each do |step| %>
 						<li>
 							<div class="step__list-text">
-								<%= step.step %>
+								<%= step.text %>
 							</div>
 							<div class="step__list-img">
 								<%= image_tag 'no.jpeg', height:"90px" %>

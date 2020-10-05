@@ -11,13 +11,17 @@ class RecipesController < ApplicationController
 	end
 
 	def new
-		@recipe_form = RecipeForm.new
+		@recipe = Recipe.new
+		@recipe.images.new
+		@recipe.ingredients.build
+		step = @recipe.steps.build
+		@step_image = step.step_images.build
 	end
 
 	def create
-		@recipe_form = RecipeForm.new(recipe_params)
-		@recipe_form.user_id = current_user.id
-		if @recipe_form.save
+		@recipe = Recipe.new(recipe_params)
+		@recipe.user_id = current_user.id
+		if @recipe.save
 			redirect_to recipes_path
 		else
 			render :new
@@ -26,18 +30,15 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id])
-		@ingredient = Ingredient.where(:recipe_id => @recipe.id)
-		@step = Step.where(:recipe_id => @recipe.id)
 	end
 
 	def edit
-  	recipe = Recipe.find(params[:id])
-  	@recipe_form = RecipeForm.new(user_id: recipe.user_id, genre_id: recipe.genre_id, name: recipe.name, introduction: recipe.introduction, comment: recipe.comment, how_many: recipe.how_many, is_private: recipe.is_private)
+  	@recipe = Recipe.find(params[:id])
 	end
 
 	def update
-		recipe = Recipe.find(params[:id])
-		@recipe_form = RecipeForm.new(user_id: recipe.user_id, genre_id: recipe.genre_id, name: recipe.name, introduction: recipe.introduction, comment: recipe.comment, how_many: recipe.how_many, is_private: recipe.is_private)
+		@recipe = Recipe.find(params[:id])
+		binding.pry
 		if @recipe.update(recipe_params)
 			redirect_to recipes_path
 		else
@@ -54,19 +55,16 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		ingredient = params.permit(ingredient:{}, quantity:{})
-		step = params.permit(step:{})
-		recipe = params.require(:recipe_form).permit(:user_id,
-																								 :genre_id,
-																								 :name,
-																							   :introduction,
-																							   :comment,
-																							   :how_many,
-																							   :is_private,
-																							   :image
+		params.require(:recipe).permit(:user_id,
+																	:genre_id,
+																	:name,
+																	:introduction,
+																  :comment,
+																  :how_many,
+																  :is_private,
+																  images_attributes: [:id, :image],
+																  ingredients_attributes: [:id, :name, :quantity],
+																  steps_attributes: [:id, :text, step_images_attributes: [:id, :step_image]]
 		)
-		hash1 = recipe.merge(ingredient)
-		hash1.merge(step)
 	end
-
 end
