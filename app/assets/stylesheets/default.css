@@ -192,6 +192,7 @@ body {
 }
 
 .group--step-form__image {
+	width: 35%;
 	float: left;
 }
 

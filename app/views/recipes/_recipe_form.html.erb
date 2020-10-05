@@ -1,11 +1,11 @@
-<%= form_with(model: recipe_form, url: recipes_path, local: true) do |f| %>
+<%= form_with(model: recipe, local: true) do |f| %>
 
 <!-- 左ページ（料理名、料理説明、料理写真、材料） -->
 	<div class="group">
-		<% if recipe_form.errors.any? %>
+		<% if recipe.errors.any? %>
 		  <div class="alert alert-warning">
 		    <ul>
-		      <% recipe_form.errors.full_messages.each do |message| %>
+		      <% recipe.errors.full_messages.each do |message| %>
 		        <li><%= message %></li>
 		      <% end %>
 		    </ul>
@@ -22,23 +22,27 @@
 
 		<!-- 料理写真は今後増やす可能性を考え別テーブルで管理 -->
 		<div class="group--form__image">
-			<%= f.label :image do %>
-				<%= image_tag 'no.jpeg', height:"170px", class:"img" %>
-				<%= f.file_field :image, class:"file image--button" %>
+			<%= f.fields_for :images do |image| %>
+				<%= image.label :image do %>
+					<%= image_tag 'no.jpeg', height:"170px", class:"img" %>
+					<%= image.attachment_field :image, class:"file image--button" %>
+				<% end %>
 			<% end %>
 		</div>
 
 		<div class="group--form">
 			<h3 class="group--form__head">材料<span>（<%= f.select :how_many, (1..10),{}, class:"form" %>人分）</span></h3>
 			<div class="scroll__secondary-1">
-				<ul>
-					<div id="ingredient-field[0]">
-						<li>
-							<%= f.text_field :ingredient, placeholder:"材料名", name:"ingredient[0]", id:"ingredient[0]", class:"form group--form__ingredient" %>
+				<ul id="ingredient-box">
+					<%= f.fields_for :ingredients do |i| %>
+						<div id="ingredient-field[0]">
+							<li>
+								<%= i.text_field :name, placeholder:"材料名", name:"recipe[ingredients_attributes][0][name]", id:"recipe_ingredients_attributes_0_name", class:"form group--form__ingredient" %>
 							・・・
-							<%= f.text_field :quantity, placeholder:"分量", name:"quantity[0]", id:"quantity[0]", class:"form" %>
-						</li>
-					</div>
+								<%= i.text_field :quantity, placeholder:"分量", name:"recipe[ingredients_attributes][0][quantity]", id:"recipe_ingredients_attributes_0_quantity", class:"form" %>
+							</li>
+						</div>
+					<% end %>
 				</ul>
 				<div id="add">追加</div>
 			</div>
@@ -62,21 +66,24 @@
 		<div class="group--form">
 			<h3 class="group--form__head">作り方</h3>
 			<div class="scroll__secondary-2">
-				<ol>
-					<div id="step-field[0]">
-						<li class="group--step-form">
-							<%= f.text_area :step, name:"step[0]", id:"step[0]", class:"form group--step-form__step" %>
-							<div class="group--step-form__image">
-								<%= f.label :step_image do %>
-									<%= image_tag 'no.jpeg', height:"80px", class:"step-img" %>
-									<%= f.file_field :step_image, class:"step-file image--button" %>
-								<% end %>
-							</div>
-						</li>
-					</div>
+				<ol id="step-box">
+					<%= f.fields_for :steps do |s| %>
+						<div id="step-field[0]">
+							<li class="group--step-form">
+								<%= s.text_area :text, name:"recipe[steps_attributes][0][text]", id:"recipe_steps_attributes_0_text", class:"form group--step-form__step" %>
+								<div id="step-image-field[0]" class="group--step-form__image">
+									<%= s.fields_for :step_images, step_image do |si| %>
+										<%= si.label :step_image, {for:"recipe_steps_attributes_0_step_images_step_image"} do %>
+											<%= image_tag 'no.jpeg', height:"80px", class:"step-img" %>
+											<%= si.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images][step_image]", id:"recipe_steps_attributes_0_step_images_step_image", class:"step-file image--button" %>
+										<% end %>
+									<% end %>
+								</div>
+							</li>
+						</div>
+					<% end %>
 				</ol>
 				<div id="add2">追加</div>
-
 			</div>
 		</div>
 
