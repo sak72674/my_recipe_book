@@ -17,3 +17,17 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.field_with_errors {
+	display: contents;
+}
+
+.alert {
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+.alert li {
+	display: inline-block;
+	padding-right: 40px;
+}

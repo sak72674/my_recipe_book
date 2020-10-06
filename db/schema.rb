@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_003212) do
+ActiveRecord::Schema.define(version: 2020_10_06_111255) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "genre_id", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_003212) do
 
   create_table "images", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.integer "image_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_003212) do
 
   create_table "step_images", force: :cascade do |t|
     t.integer "step_id", null: false
-    t.integer "step_image_id"
+    t.string "step_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

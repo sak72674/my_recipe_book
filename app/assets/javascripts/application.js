@@ -34,21 +34,21 @@ $(function(){
 })
 
 // 手順画像プレビュー表示
-$(function () {
-  $('.step-file').on('change', function(){
-     var $files = $(this).prop('files');
-     var len = $files.length;
-     for ( var i = 0; i < len; i++ ) {
-      var file = $files[i];
-     	var reader = new FileReader();
+// $(function () {
+//   $('.step-file').on('change', function(){
+//      var $files = $(this).prop('files');
+//      var len = $files.length;
+//      for ( var i = 0; i < len; i++ ) {
+//       var file = $files[i];
+//      	var reader = new FileReader();
 
-	    reader.onload = function() {
-	      $('.step-img').attr('src', reader.result);
-	    }
-    	reader.readAsDataURL(file);
-  	}
-  });
-})
+// 	    reader.onload = function() {
+// 	      $('.step-img').attr('src', reader.result);
+// 	    }
+//     	reader.readAsDataURL(file);
+//   	}
+//   });
+// })
 
 // 材料フォーム追加
 $(function() {
@@ -70,14 +70,15 @@ $(function() {
 // 手順フォーム追加
 $(function() {
   var count = $('#step-box').length;
-    $('#add2').on('click', function() {
+  $('#add2').on('click', function() {
     var input =
          '<div id="step-field[' + count +']">'
         + '<li class="group--step-form">'
         + '<textarea name="recipe[steps_attributes][' + count + '][text]" id="recipe_steps_attributes_' + count + '_text" class="form group--step-form__step"></textarea>'
-        + '<div id="step-image-field[' + count +']" class="group--step-form__image">'
+        + '<div id="step-image-field[' + count +']" class="group--step-form__image preview_' + count + '">'
 				+	'<label for="recipe_steps_attributes_' + count + '_step_images_step_image">'
 				+ '<img height="80px" class="step-img" src="/assets/no-a5f1d9ff311e907fb87093b1862ca98110b27370235519e530e05b1a6ac1ac6f.jpg">'
+				+ '<input value="{}" data-reference="bbbbc08269842b829b74d1edbc6aea2c" type="hidden" name="recipe[steps_attributes][' + count + '][step_images][step_image]">'
 				+ '<input name="recipe[steps_attributes][' + count + '][step_images][step_image]" id="recipe_steps_attributes_' + count + '_step_images_step_image" class="step-file image--button" type="file">'
         + '</label>'
         + '</div>'
@@ -85,6 +86,17 @@ $(function() {
         + '</div>'
     $('#step-box').append(input);
     count ++;
+  });
+
+  $(document).on('change', '.step-file', function(){
+  	var id = $(this).attr('id').replace(/[^0-9]/g, '');
+  	var file = $(this).prop('files')[0];
+    var reader = new FileReader();
+
+    reader.onload = function() {
+    	$(`.preview_${id} img`).attr('src', reader.result);
+    }
+    reader.readAsDataURL(file);
   });
 });
 
