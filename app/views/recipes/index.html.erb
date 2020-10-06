@@ -1,14 +1,16 @@
 <div class="main">
 	<div class="contents">
-		<h2 class="contents--head">
-			<% if @genre %>
-				<%= @genre.name %>
-			<% else %>
-				レシピ
-			<% end %>
-				一覧
-		</h2>
-		<div class="index">
+		<div>
+			<h2 class="contents--head">
+				<% if @genre %>
+					<%= @genre.name %>
+				<% else %>
+					レシピ
+				<% end %>
+					一覧
+			</h2>
+		</div>
+		<div class="group index">
 			<% @recipes.each do |recipe| %>
 				<div class="index--item">
 					<%= link_to recipe.name, recipe_path(recipe) %>
@@ -16,5 +18,12 @@
 			<% end %>
 		</div>
 		<%= paginate @recipes %>
+		<div class="group index">
+			<% @bookmarks.each do |bookmark| %>
+				<div class="index--item">
+					<%= link_to bookmark.name, bookmark_path(bookmark) %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>
