@@ -6,14 +6,7 @@ body {
 	background-color: #fffde9 !important;
 }
 
-.main {
-	width: 100vw;
-	height: 100vh;
-	background-image: url(back.jpeg);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-}
+
 
 .contents {
 	width: 90%;
