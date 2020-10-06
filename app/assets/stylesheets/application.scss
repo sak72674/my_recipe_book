@@ -18,6 +18,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
 .main {
 	width: 100vw;
 	height: 100vh;
@@ -25,4 +26,18 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.field_with_errors {
+	display: contents;
+}
+
+.alert {
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+.alert li {
+	display: inline-block;
+	padding-right: 40px;
 }

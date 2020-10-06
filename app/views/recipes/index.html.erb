@@ -1,0 +1,20 @@
+<div class="main">
+	<div class="contents">
+		<h2 class="contents--head">
+			<% if @genre %>
+				<%= @genre.name %>
+			<% else %>
+				レシピ
+			<% end %>
+				一覧
+		</h2>
+		<div class="index">
+			<% @recipes.each do |recipe| %>
+				<div class="index--item">
+					<%= link_to recipe.name, recipe_path(recipe) %>
+				</div>
+			<% end %>
+		</div>
+		<%= paginate @recipes %>
+	</div>
+</div>
