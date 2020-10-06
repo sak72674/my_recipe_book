@@ -1,0 +1,101 @@
+<%= form_with(model: recipe, local: true) do |f| %>
+
+<!-- 左ページ（料理名、料理説明、料理写真、材料） -->
+	<div class="group">
+		<% if recipe.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <% recipe.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+
+		<div class="group--form">
+			<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
+			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>
+		</div>
+		<div class="group--form">
+			<%= f.text_area :introduction, placeholder:"料理説明", class:"form group--form__intro" %>
+		</div>
+
+		<!-- 料理写真は今後増やす可能性を考え別テーブルで管理 -->
+		<div class="group--form__image">
+			<%= f.fields_for :images do |image| %>
+				<%= image.label :image do %>
+					<% recipe.images.each do |image| %>
+						<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200", class:"img" %>
+					<% end %>
+					<%= image.attachment_field :image, class:"file image--button" %>
+				<% end %>
+			<% end %>
+		</div>
+
+		<div class="group--form">
+			<h3 class="group--form__head">材料<span>（<%= f.select :how_many, (1..10),{}, class:"form" %>人分）</span></h3>
+			<div class="scroll__secondary-1">
+				<ul id="ingredient-box">
+					<%= f.fields_for :ingredients do |i| %>
+						<div id="ingredient-field[0]">
+							<li>
+								<%= i.text_field :name, placeholder:"材料名", name:"recipe[ingredients_attributes][0][name]", id:"recipe_ingredients_attributes_0_name", class:"form group--form__ingredient" %>
+							・・・
+								<%= i.text_field :quantity, placeholder:"分量", name:"recipe[ingredients_attributes][0][quantity]", id:"recipe_ingredients_attributes_0_quantity", class:"form" %>
+							</li>
+						</div>
+					<% end %>
+				</ul>
+				<div id="add">追加</div>
+			</div>
+		</div>
+
+		<!-- 公開設定 -->
+		<div class="group-form">
+			<h3 class="group--form__head group--form__private">公開設定</h3>
+			<div class="group--form__private">
+				<%= f.radio_button :is_private, true, checked: true %>
+	      <%= f.label :is_private, "非公開" %>
+	      <%= f.radio_button :is_private, false %>
+	      <%= f.label :is_private, "公開" %>
+	    </div>
+    </div>
+	</div>
+
+
+<!-- 右ページ（作り方、コメント） -->
+	<div class="group">
+		<div class="group--form">
+			<h3 class="group--form__head">作り方</h3>
+			<div class="scroll__secondary-2">
+				<ol id="step-box">
+					<%= f.fields_for :steps do |s| %>
+						<div id="step-field[0]">
+							<li class="group--step-form">
+								<%= s.text_area :text, name:"recipe[steps_attributes][0][text]", id:"recipe_steps_attributes_0_text", class:"form group--step-form__step" %>
+								<div id="step-image-field[0]" class="group--step-form__image preview_0">
+									<%= s.fields_for :step_images do |si| %>
+										<%= si.label :step_image, {for:"recipe_steps_attributes_0_step_images_step_image"} do %>
+											<%= image_tag 'no.jpeg', height:"80px", class:"step-img" %>
+											<%= si.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images][step_image]", id:"recipe_steps_attributes_0_step_images_step_image", class:"step-file image--button" %>
+										<% end %>
+									<% end %>
+								</div>
+							</li>
+						</div>
+					<% end %>
+				</ol>
+				<div id="add2">追加</div>
+			</div>
+		</div>
+
+		<div class="group--form">
+			<%= f.text_area :comment, placeholder:"コメント（作るコツ、美味しく食べるポイントなど）", class:"form group--form__comment" %>
+		</div>
+		<div class="group--button">
+			<%= f.submit '完成！', class:"button group--button__secondary-1" %>
+		</div>
+	</div>
+<% end %>
+
+
