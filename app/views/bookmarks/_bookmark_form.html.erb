@@ -1,24 +1,26 @@
 <%= form_for(bookmark) do |f| %>
-	<% if bookmark.errors.any? %>
-	  <div class="alert alert-warning">
-	    <ul>
-	      <% bookmark.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	    </ul>
-	  </div>
-	<% end %>
-	<div class="group--form">
-		<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
-		<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>
-	</div>
-	<div class="group--form">
-		<%= f.text_field :url, placeholder:"URL", class:"form" %>
-	</div>
-	<div class="group--form">
-		<%= f.text_field :site, placeholder:"サイト名", class:"form" %>
-	</div>
-	<div class="group--button">
-		<%= f.submit '登録', class:"button group--button__secondary-2" %>
+	<div class="group">
+		<% if bookmark.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <% bookmark.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+		<div class="group--form">
+			<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
+			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>
+		</div>
+		<div class="group--form">
+			<%= f.text_field :url, placeholder:"URL", class:"form group--form__url" %>
+		</div>
+		<div class="group--form">
+			<%= f.text_field :site, placeholder:"サイト名", class:"form group--form__site" %>
+		</div>
+		<div class="group--button__book">
+			<%= f.submit '登録', class:"button group--button__secondary-2" %>
+		</div>
 	</div>
 <% end %>

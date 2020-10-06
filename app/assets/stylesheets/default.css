@@ -224,12 +224,38 @@ body {
 	margin-left: 10%;
 }
 
+.group--form__url {
+	width: 96%;
+	height: 50px;
+	font-size: 18px;
+}
+
+.group--form__site {
+	width: 50%;
+	height: 50px;
+	font-size: 18px;
+}
+
+.group--button__book {
+	text-align: right;
+}
+
+.group--button__edit {
+	margin-top: 10%;
+}
+
 .group--button__secondary-1 {
 	background-color: #eff7c6;
 }
 
 .group--button__secondary-2 {
 	background-color: #FFF2CD;
+	text-align: right;
+}
+
+.bookmark--item {
+	font-size: 18px;
+	margin: 20px 0;
 }
 
 .detail--intro {
@@ -298,23 +324,17 @@ body {
 	float: left;
 }
 
-.group--button__edit {
-	margin-top: 10%;
-}
-
 .index {
-	width: 80%;
-	margin: 0 auto;
+	text-align: center;
 }
 
 .index--item {
-	width: 50%;
 	font-size: 24px;
-	margin: 40px 0;
-	float: left;
+	margin: 50px 0;
 }
 
 .pagination {
 	position: fixed;
 	bottom: 20%;
+	right: 10%;
 }
