@@ -12,10 +12,10 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
-		@recipe.images.new
+		@recipe.images.build
 		@recipe.ingredients.build
 		step = @recipe.steps.build
-		@step_image = step.step_images.build
+		step.step_images.build
 	end
 
 	def create
@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id])
+		@images = @recipe.images
 	end
 
 	def edit

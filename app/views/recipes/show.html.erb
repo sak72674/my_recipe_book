@@ -9,7 +9,11 @@
 				<h3 class="detail--head">料理説明</h3>
 				<%= @recipe.introduction %>
 			</div>
-			<div class="detail--image"><%= image_tag 'no.jpeg', height:"150px" %></div>
+			<div class="detail--image">
+				<% @images.each do |image| %>
+					<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200" %>
+				<% end %>
+			</div>
 
 			<h3 class="group--form__head">材料<span>（<%= @recipe.how_many %>人分）</span></h3>
 			<div  class="detail--ingredients">
