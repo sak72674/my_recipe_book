@@ -8,9 +8,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/98c29c3cb5.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main">
+      <div class="contents">
+        <header>
+          <div class="header">
+            <% if user_signed_in? %>
+            <%= current_user.name %>'s Recipe Book
+              <%= link_to users_path do %>
+                <i class="fas fa-home"></i>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </header>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
