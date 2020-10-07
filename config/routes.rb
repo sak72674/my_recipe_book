@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'home/about'
   root 'home#top'
 
+  get 'favorite', to: 'users#favorite'
+
   resource :users, only: [:show, :edit, :update]
   resources :recipes do
   	resources :images, only: [:create, :update, :destroy]

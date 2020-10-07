@@ -1,19 +1,15 @@
-<div class="main">
-	<div class="contents">
-		<div class="home">
-			<div class="home--title">
-				<img src="<%= asset_path "title.png" %>" class="home--title__image">
-			</div>
-			<div class="home--login">
-				<%= link_to 'ログイン', new_user_session_path, class:"button login--button__secondary-1" %>
-				<%= link_to '新規登録', new_user_registration_path, class:"button login--button__secondary-2" %>
-			</div>
-			<div class="home--about">
-				<%= link_to 'このサイトについて', "/home/about" %>
-			</div>
-			<div class="home--logo">
-				<img src="<%= asset_path "logo.png" %>">
-			</div>
-		</div>
+<div class="home">
+	<div class="home--title">
+		<img src="<%= asset_path "title.png" %>" class="home--title__image">
+	</div>
+	<div class="home--login">
+		<%= link_to 'ログイン', new_user_session_path, class:"button login--button__secondary-1" %>
+		<%= link_to '新規登録', new_user_registration_path, class:"button login--button__secondary-2" %>
+	</div>
+	<div class="home--about">
+		<%= link_to 'このサイトについて', "/home/about" %>
+	</div>
+	<div class="home--logo">
+		<img src="<%= asset_path "logo.png" %>">
 	</div>
 </div>
