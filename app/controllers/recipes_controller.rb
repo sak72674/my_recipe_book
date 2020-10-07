@@ -2,12 +2,13 @@ class RecipesController < ApplicationController
 
 	def index
 		if params[:genre_id]
-      @recipes = current_user.recipes.where(genre_id: params[:genre_id]).order(:name).page(params[:page]).per(10)
+      @recipes = current_user.recipes.where(genre_id: params[:genre_id]).order(:name).page(params[:page]).per(6)
+      @bookmarks = current_user.bookmarks.where(genre_id: params[:genre_id]).order(:name).page(params[:page]).per(6)
       @genre = Genre.find(params[:genre_id])
     else
-    	@recipes = current_user.recipes.all.order(:name).page(params[:page]).per(10)
+    	@recipes = current_user.recipes.all.order(:name).page(params[:page]).per(6)
+    	@bookmarks = current_user.bookmarks.all.order(:name).page(params[:page]).per(6)
     end
-		# @bookmarks = current_user.bookmarks.all.order(:name)
 	end
 
 	def new

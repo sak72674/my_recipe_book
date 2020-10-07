@@ -4,9 +4,20 @@
 
 body {
 	background-color: #fffde9 !important;
+	position: relative;
 }
 
 
+.header {
+	position: absolute;
+	top: 70px;
+	right: 0;
+	font-size: 22px;
+}
+
+i {
+	padding: 0 10px;
+}
 
 .contents {
 	width: 90%;
@@ -224,12 +235,38 @@ body {
 	margin-left: 10%;
 }
 
+.group--form__url {
+	width: 96%;
+	height: 50px;
+	font-size: 18px;
+}
+
+.group--form__site {
+	width: 50%;
+	height: 50px;
+	font-size: 18px;
+}
+
+.group--button__book {
+	text-align: right;
+}
+
+.group--button__edit {
+	margin-top: 10%;
+}
+
 .group--button__secondary-1 {
 	background-color: #eff7c6;
 }
 
 .group--button__secondary-2 {
 	background-color: #FFF2CD;
+	text-align: right;
+}
+
+.bookmark--item {
+	font-size: 18px;
+	margin: 20px 0;
 }
 
 .detail--intro {
@@ -298,23 +335,107 @@ body {
 	float: left;
 }
 
-.group--button__edit {
-	margin-top: 10%;
-}
-
 .index {
-	width: 80%;
-	margin: 0 auto;
+	text-align: center;
 }
 
 .index--item {
-	width: 50%;
 	font-size: 24px;
-	margin: 40px 0;
+	margin: 50px 0;
+}
+
+.mypage {
+	width: 48%;
+	height: 700px;
 	float: left;
+	margin: 0 1%;
+}
+
+.mypage--contents {
+	margin-top: 80px;
+}
+
+.mypage--favo {
+	width: 35%;
+	margin-left: 15%;
+	padding-bottom: 10px;
+	float: left;
+}
+
+.mypage--search {
+	width: 35%;
+	padding-bottom: 10px;
+	text-align: right;
+	float: left;
+}
+
+.mypage--search__form {
+	height: 40px;
+	width: 50%;
+}
+
+.btn__1 {
+	background-color: #C9D48F;
+}
+
+.btn__2 {
+	background-color: #DBC894;
+}
+
+.mypage--post {
+	width: 70%;
+	height: 70%;
+	margin: 0 auto;
+	background-color: #dbd494;
+	overflow: auto;
+}
+
+.post {
+	padding: 20px 5px;
+	position: relative;
+	border-bottom: solid 1px #ddd;
+}
+
+.post--image {
+	display: inline-block;
+}
+
+.post--item {
+	display: inline-block;
+	vertical-align: top;
+	padding-left: 5px;
+}
+
+.post--item__name {
+	font-size: 18px;
+	padding: 5px 0;
+}
+
+.post--item__intro {
+	font-size: 12px;
+	padding: 5px 0;
+}
+
+.post--item__favo {
+	text-align: right;
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+}
+
+.mypage--genre {
+	text-align: center;
+	font-size: 24px;
+	margin: 50px 0;
+}
+
+.new--button {
+	text-align: center;
+	padding-top: 30px;
 }
 
 .pagination {
 	position: fixed;
 	bottom: 20%;
+	right: 10%;
 }
