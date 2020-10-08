@@ -10,12 +10,7 @@ Rails.application.routes.draw do
 
   resource :users, only: [:show, :edit, :update]
   resources :recipes do
-  	resources :images, only: [:create, :update, :destroy]
   	resource :favorites, only: [:create, :destroy]
-  	resources :steps, only: [:create, :update, :destroy] do
-  		resources :images, only: [:create, :update, :destroy]
-  	end
-  	resources :ingredients, only: [:create, :update, :destroy]
   end
   resources :bookmarks, only: [:new, :create, :show, :edit, :update, :destroy]
 
