@@ -514,3 +514,11 @@ body {
 	text-align: center;
 	padding-top: 30px;
 }
+
+
+/* レスポンシブ対応 */
+
+
+@media screen and (max-width:768px) {
+
+	}

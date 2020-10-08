@@ -45,7 +45,9 @@
 							<%= step.text %>
 						</div>
 						<div class="step__list-img">
-							<%= image_tag 'no.jpeg', height:"90px" %>
+							<% step.step_images.each do |step_image| %>
+								<%= attachment_image_tag step_image, :step_image, size:"120x90" %>
+							<% end %>
 						</div>
 					</li>
 				<% end %>
