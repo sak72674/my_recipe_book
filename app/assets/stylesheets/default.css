@@ -397,7 +397,8 @@ i {
 }
 
 .post--image {
-	display: inline-block;
+	width: 280px;
+	margin: 0 auto;
 }
 
 .post--item {
