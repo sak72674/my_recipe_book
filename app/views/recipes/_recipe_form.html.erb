@@ -2,16 +2,6 @@
 
 <!-- 左ページ（料理名、料理説明、料理写真、材料） -->
 	<div class="group">
-		<% if recipe.errors.any? %>
-		  <div class="alert alert-warning">
-		    <ul>
-		      <% recipe.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		      <% end %>
-		    </ul>
-		  </div>
-		<% end %>
-
 		<div class="group--form">
 			<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
 			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>

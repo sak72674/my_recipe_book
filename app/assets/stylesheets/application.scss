@@ -20,24 +20,13 @@
 
 
 .main {
-	width: 100vw;
-	height: 100vh;
-	background-image: image-url("back.jpeg");
-	background-size: contain;
-	background-repeat: no-repeat;
+	width: 100%;
+	min-height: 100vh;
+	background-image: image-url("top.jpg");
+	background-size: cover;
 	background-position: center;
 }
 
 .field_with_errors {
 	display: contents;
-}
-
-.alert {
-	padding: 0;
-	margin-bottom: 5px;
-}
-
-.alert li {
-	display: inline-block;
-	padding-right: 40px;
 }
