@@ -22,7 +22,6 @@ class RecipesController < ApplicationController
 	def create
 		@recipe = Recipe.new(recipe_params)
 		@recipe.user_id = current_user.id
-		binding.pry
 		if @recipe.save
 			redirect_to recipe_path(@recipe)
 		else
@@ -32,7 +31,6 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id])
-		@images = @recipe.images
 	end
 
 	def edit
@@ -41,7 +39,6 @@ class RecipesController < ApplicationController
 
 	def update
 		@recipe = Recipe.find(params[:id])
-		binding.pry
 		if @recipe.update(recipe_params)
 			redirect_to recipe_path(@recipe)
 		else
