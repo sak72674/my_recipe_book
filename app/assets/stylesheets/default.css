@@ -7,44 +7,23 @@ body {
 	position: relative;
 }
 
-
-.header {
-	position: absolute;
-	top: 70px;
-	right: 0;
-	font-size: 22px;
-}
-
-i {
-	padding: 0 10px;
+.main--back {
+	background-color: rgba(255,255,255,0.4);
+	width: 100%;
+	min-height: 100vh;
 }
 
 .contents {
 	width: 90%;
   margin: 0 auto;
-  padding: 5% 0;
   position: relative;
 }
 
-.contents--head {
-	display: inline-block;
+.group--form__head, .contents--head, .detail--head, .header--title__item, .home--title h2 {
+	font-family: "Sawarabi Mincho";
 }
 
-.contents--head span {
-	font-size: 16px;
-}
-
-.home--title {
-	display: flex;
-	justify-content: center;
-	padding-top: 200px;
-	margin-bottom: 30px;
-}
-
-.home--login {
-	display: flex;
-	justify-content: center;
-}
+/* 全ボタン適クラス */
 
 .button {
 	font-size: 18px;
@@ -61,6 +40,83 @@ i {
 	color: #6b6b6b;
 }
 
+/* 全フォーム適応クラス */
+
+.form {
+	background-color: #fffef9;
+	border: none;
+	border-bottom: solid 1px rgba(219,212,148,0.3);
+	outline: none;
+}
+
+/* header */
+
+.header {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header--title {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.header--title__logo {
+	height: 90px;
+}
+
+.header--title__image {
+	height: 80px;
+}
+
+.header--title__item {
+	line-height: 90px;
+	font-size: 28px;
+}
+
+.header--icon {
+	line-height: 90px;
+	font-size: 28px;
+}
+
+.header--icon i {
+	padding: 0 15px;
+}
+
+/* top */
+
+.home--title {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 15%;
+	background-color: rgba(255,253,231,0.8);
+	width: 70%;
+}
+
+.home--title h2 {
+	font-size: 52px;
+}
+
+.home--title p {
+	font-size: 20px;
+}
+
+.home--item {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.contents--head {
+	display: inline-block;
+}
+
+.contents--head span {
+	font-size: 16px;
+}
+
 .login--button__secondary-1 {
 	margin: 0 50px;
 	background-color: #EFF7C6;
@@ -73,14 +129,10 @@ i {
 
 .home--about {
 	text-align: center;
-	padding-top: 200px;
+	margin-top: 8%;
 }
 
-.home--logo {
-	position: absolute;
-	bottom: 40px;
-	right: 10px;
-}
+/* ログインページ */
 
 .wrap {
 	padding-top: 60px;
@@ -125,6 +177,8 @@ i {
 	background-color: #FFF2CD;
 }
 
+/* レシピ作成ページ */
+
 .group {
 	width: 48%;
 	float: left;
@@ -133,13 +187,6 @@ i {
 
 .group--form {
 	margin: 10px 0;
-}
-
-.form {
-	background-color: #fffef9;
-	border: none;
-	border-bottom: solid 1px rgba(219,212,148,0.3);
-	outline: none;
 }
 
 .group--form__name {
@@ -168,10 +215,6 @@ i {
 	width: 40%;
 	float: left;
 	margin: 10px 5%;
-}
-
-.group--form__head, .contents--head, .detail--head {
-	font-family: "Sawarabi Mincho";
 }
 
 .group--form__head span {
@@ -264,10 +307,14 @@ i {
 	text-align: right;
 }
 
+/* ブックマーク新規作成 */
+
 .bookmark--item {
 	font-size: 18px;
 	margin: 20px 0;
 }
+
+/* レシピ詳細 */
 
 .detail--intro {
 	width: 45%;
@@ -335,14 +382,46 @@ i {
 	float: left;
 }
 
+/* 一覧表示 */
+
 .index {
+	width: 35%;
+	float: left;
+	margin: 2% 7.5%;
+	position: relative;
+}
+
+.index span {
+	position: absolute;
+	right: 0;
+}
+
+.index__secondary-1 {
 	text-align: center;
+	background-color: #EFF7C6;
+}
+
+.index__secondary-2 {
+	text-align: center;
+	background-color: #FFF2CD;
+}
+
+.index--head {
+	padding-left: 5%;
 }
 
 .index--item {
 	font-size: 24px;
 	margin: 50px 0;
 }
+
+.pagination {
+	position: fixed;
+	bottom: 15%;
+	right: 10%;
+}
+
+/* マイページ */
 
 .mypage {
 	width: 48%;
@@ -351,27 +430,28 @@ i {
 	margin: 0 1%;
 }
 
-.mypage--contents {
-	margin-top: 80px;
+.mypage--left {
+	margin-top: 3%;
 }
 
-.mypage--favo {
-	width: 35%;
-	margin-left: 15%;
+.mypage--rigth {
+	margin-top: 6%;
+}
+
+.mypage--head {
+	width: 90%;
 	padding-bottom: 10px;
-	float: left;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
 }
 
 .mypage--search {
-	width: 35%;
-	padding-bottom: 10px;
 	text-align: right;
-	float: left;
 }
 
 .mypage--search__form {
 	height: 40px;
-	width: 50%;
 }
 
 .btn__1 {
@@ -383,8 +463,8 @@ i {
 }
 
 .mypage--post {
-	width: 70%;
-	height: 70%;
+	width: 90%;
+	height: 90%;
 	margin: 0 auto;
 	background-color: #dbd494;
 	overflow: auto;
@@ -397,7 +477,7 @@ i {
 }
 
 .post--image {
-	width: 280px;
+	width: 500px;
 	margin: 0 auto;
 }
 
@@ -427,16 +507,10 @@ i {
 .mypage--genre {
 	text-align: center;
 	font-size: 24px;
-	margin: 50px 0;
+	margin-bottom: 50px;
 }
 
 .new--button {
 	text-align: center;
 	padding-top: 30px;
-}
-
-.pagination {
-	position: fixed;
-	bottom: 20%;
-	right: 10%;
 }

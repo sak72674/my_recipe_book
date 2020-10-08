@@ -11,23 +11,24 @@
   </head>
 
   <body>
-    <div class="main">
-      <div class="contents">
-        <header>
-          <div class="header">
-            <% if user_signed_in? %>
-            <%= current_user.name %>'s Recipe Book
-              <%= link_to users_path do %>
-                <i class="fas fa-home"></i>
-              <% end %>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt"></i>
-              <% end %>
+    <% if user_signed_in? %>
+      <header>
+        <div class="header">
+          <div class="header--title">
+            <img src="<%= asset_path "logo.png" %>" class="header--title__logo">
+            <div class="header--title__item"><%= current_user.name %>'s Recipe Book</div>
+          </div>
+          <div class="header--icon">
+            <%= link_to users_path do %>
+              <i class="fas fa-home"></i>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
             <% end %>
           </div>
-        </header>
-        <%= yield %>
-      </div>
-    </div>
+        </div>
+      </header>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

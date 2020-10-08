@@ -1,66 +1,67 @@
-<h2 class="contents--head"><%= @recipe.name %>
-	<span><% if @recipe.is_private %>（非公開）<% else %>（公開中）<% end %></span>
-</h2>
-<div><%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %></div>
-<div class="group">
-	<div class="detail--intro">
-		<h3 class="detail--head">料理説明</h3>
-		<%= @recipe.introduction %>
+<div class="contents">
+	<h2 class="contents--head"><%= @recipe.name %>
+		<span><% if @recipe.is_private %>（非公開）<% else %>（公開中）<% end %></span>
+	</h2>
+	<div><%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %></div>
+	<div class="group">
+		<div class="detail--intro">
+			<h3 class="detail--head">料理説明</h3>
+			<%= @recipe.introduction %>
+		</div>
+		<div class="detail--image">
+			<% @images.each do |image| %>
+				<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200" %>
+			<% end %>
+		</div>
+
+		<h3 class="group--form__head">材料<span>（<%= @recipe.how_many %>人分）</span></h3>
+		<div  class="detail--ingredients">
+			<table class="detail--ingredients__table">
+				<tr>
+					<th>材料</th>
+					<th>分量</th>
+				</tr>
+				<% @recipe.ingredients.each do |ingredient| %>
+					<tr>
+						<td>
+							<%= ingredient.name %>
+						</td>
+						<td>
+							<%= ingredient.quantity %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
 	</div>
-	<div class="detail--image">
-		<% @images.each do |image| %>
-			<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200" %>
+
+	<div class="group">
+		<h3 class="group--form__head">作り方</h3>
+		<div class="detail--steps">
+			<ol class="detail--steps__list">
+				<% @recipe.steps.each do |step| %>
+					<li>
+						<div class="step__list-text">
+							<%= step.text %>
+						</div>
+						<div class="step__list-img">
+							<%= image_tag 'no.jpeg', height:"90px" %>
+						</div>
+					</li>
+				<% end %>
+			</ol>
+		</div>
+		<div class="detail--comment">
+			<h3 class="detail--head">ワンポイント</h3>
+			<%= @recipe.comment %>
+		</div>
+		<% if @recipe.user == current_user %>
+			<div class="group--button group--button__edit">
+				<%= link_to '編集', edit_recipe_path(@recipe), class:"button group--button__secondary-1" %>
+				<%= link_to '削除', recipe_path(@recipe), method: :delete, 'data-confirm' => "本当に削除しますか？", class:"button group--button__secondary-2" %>
+			</div>
 		<% end %>
 	</div>
-
-	<h3 class="group--form__head">材料<span>（<%= @recipe.how_many %>人分）</span></h3>
-	<div  class="detail--ingredients">
-		<table class="detail--ingredients__table">
-			<tr>
-				<th>材料</th>
-				<th>分量</th>
-			</tr>
-			<% @recipe.ingredients.each do |ingredient| %>
-				<tr>
-					<td>
-						<%= ingredient.name %>
-					</td>
-					<td>
-						<%= ingredient.quantity %>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-	</div>
 </div>
-
-<div class="group">
-	<h3 class="group--form__head">作り方</h3>
-	<div class="detail--steps">
-		<ol class="detail--steps__list">
-			<% @recipe.steps.each do |step| %>
-				<li>
-					<div class="step__list-text">
-						<%= step.text %>
-					</div>
-					<div class="step__list-img">
-						<%= image_tag 'no.jpeg', height:"90px" %>
-					</div>
-				</li>
-			<% end %>
-		</ol>
-	</div>
-	<div class="detail--comment">
-		<h3 class="detail--head">ワンポイント</h3>
-		<%= @recipe.comment %>
-	</div>
-	<% if @recipe.user == current_user %>
-		<div class="group--button group--button__edit">
-			<%= link_to '編集', edit_recipe_path(@recipe), class:"button group--button__secondary-1" %>
-			<%= link_to '削除', recipe_path(@recipe), method: :delete, 'data-confirm' => "本当に削除しますか？", class:"button group--button__secondary-2" %>
-		</div>
-	<% end %>
-</div>
-
 
 
