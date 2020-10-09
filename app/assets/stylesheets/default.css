@@ -19,7 +19,7 @@ body {
   position: relative;
 }
 
-.group--form__head, .contents--head, .detail--head, .header--title__item, .home--title h2 {
+.group--form__head, .contents--head, .detail--head, .header--title__item, .home--title h2, .about--head span {
 	font-family: "Sawarabi Mincho";
 }
 
@@ -130,6 +130,53 @@ body {
 .home--about {
 	text-align: center;
 	margin-top: 8%;
+}
+
+/* about */
+
+.about--back {
+	display: flex;
+}
+
+.about--back img {
+  width: 25%;
+}
+
+.about--head {
+	text-align: center;
+	width: 65%;
+	margin: 2% auto;
+}
+
+.about--head__left {
+	text-align: left;
+	font-size: 22px;
+}
+
+.about--head__right {
+	text-align: right;
+	font-size: 22px;
+}
+
+.about--head__center {
+	font-size: 38px;
+	padding-top: 2%;
+}
+
+.about--contents {
+	width: 70%;
+	margin: 6% auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.about--contents__item {
+	width: 25%;
+	text-align: center;
+}
+
+.about--contents__item i {
+	font-size: 52px;
 }
 
 /* ログインページ */
