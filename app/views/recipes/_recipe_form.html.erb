@@ -2,16 +2,6 @@
 
 <!-- 左ページ（料理名、料理説明、料理写真、材料） -->
 	<div class="group">
-		<% if recipe.errors.any? %>
-		  <div class="alert alert-warning">
-		    <ul>
-		      <% recipe.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		      <% end %>
-		    </ul>
-		  </div>
-		<% end %>
-
 		<div class="group--form">
 			<%= f.text_field :name, placeholder:"料理名", class:"form group--form__name" %>
 			<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank:"ジャンル"}, {class:"form group--form__select"} %>
@@ -37,7 +27,7 @@
 			<div class="scroll__secondary-1">
 				<ul id="ingredient-box">
 					<%= f.fields_for :ingredients do |i| %>
-						<div id="ingredient-field[0]">
+						<div id="ingredient-field">
 							<li>
 								<%= i.text_field :name, placeholder:"材料名", name:"recipe[ingredients_attributes][0][name]", id:"recipe_ingredients_attributes_0_name", class:"form group--form__ingredient" %>
 							・・・
@@ -70,14 +60,14 @@
 			<div class="scroll__secondary-2">
 				<ol id="step-box">
 					<%= f.fields_for :steps do |s| %>
-						<div id="step-field[0]">
+						<div id="step-field">
 							<li class="group--step-form">
 								<%= s.text_area :text, name:"recipe[steps_attributes][0][text]", id:"recipe_steps_attributes_0_text", class:"form group--step-form__step" %>
 								<div id="step-image-field[0]" class="group--step-form__image preview_0">
 									<%= s.fields_for :step_images do |si| %>
-										<%= si.label :step_image, {for:"recipe_steps_attributes_0_step_images_step_image"} do %>
+										<%= si.label :step_image, {for:"recipe_steps_attributes_0_step_images_attributes_0_step_image"} do %>
 											<%= image_tag 'no.jpeg', height:"80px", class:"step-img" %>
-											<%= si.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images][step_image]", id:"recipe_steps_attributes_0_step_images_step_image", class:"step-file image--button" %>
+											<%= si.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images_attributes][0][step_image]", id:"recipe_steps_attributes_0_step_images_attributes_0_step_image", class:"step-file image--button img-0" %>
 										<% end %>
 									<% end %>
 								</div>

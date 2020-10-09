@@ -1,16 +1,18 @@
-<h2 class="contents--head"><%= @bookmark.name %></h2>
-<div>
-	<%= link_to @bookmark.genre.name, recipes_path(genre_id: @bookmark.genre.id) %>
-</div>
-<div class="group">
-	<div class="bookmark--item">
-		レシピ詳細（外部サイト）：<%= link_to @bookmark.url, url_for(@bookmark.url) %>
+<div class="contents">
+	<h2 class="contents--head"><%= @bookmark.name %></h2>
+	<div>
+		<%= link_to @bookmark.genre.name, recipes_path(genre_id: @bookmark.genre.id) %>
 	</div>
-	<div class="bookmark--item">
-		参考にしたサイト：<%= @bookmark.site %>
-	</div>
-	<div class="group--button__book group--button__edit">
-		<%= link_to '編集する', edit_bookmark_path(@bookmark), class:"button group--button__secondary-1" %>
-		<%= link_to '削除する', bookmark_path(@bookmark), method: :delete, 'data-confirm' => "本当に削除しますか？", class:"button group--button__secondary-2" %>
+	<div class="group">
+		<div class="bookmark--item">
+			レシピ詳細（外部サイト）：<%= link_to @bookmark.url, url_for(@bookmark.url) %>
+		</div>
+		<div class="bookmark--item">
+			参考にしたサイト：<%= @bookmark.site %>
+		</div>
+		<div class="group--button__book group--button__edit">
+			<%= link_to '編集する', edit_bookmark_path(@bookmark), class:"button group--button__secondary-1" %>
+			<%= link_to '削除する', bookmark_path(@bookmark), method: :delete, 'data-confirm' => "本当に削除しますか？", class:"button group--button__secondary-2" %>
+		</div>
 	</div>
 </div>
