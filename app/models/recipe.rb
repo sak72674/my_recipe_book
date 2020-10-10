@@ -11,7 +11,6 @@ class Recipe < ApplicationRecord
 	accepts_nested_attributes_for :steps, allow_destroy: true
 
 	validates :name, presence: true
-	validates :genre_id, presence: true
 	validates :introduction, presence: true
 	validates :comment, presence: true
 
