@@ -7,6 +7,10 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="wrap--field">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"名前", class:"wrap--field__input"  %>
+      </div>
+
+      <div class="wrap--field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メール", class:"wrap--field__input"  %>
       </div>
 
