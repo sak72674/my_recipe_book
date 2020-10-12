@@ -15,7 +15,7 @@
 			<%= f.fields_for :images do |image| %>
 				<%= image.label :image do %>
 					<% recipe.images.each do |image| %>
-						<%= attachment_image_tag image, :image, fallback: asset_path('no.jpeg') %>", size:"280x200", class:"img" %>
+						<%= attachment_image_tag image, :image, fallback: asset_path('no.jpeg'), size:"280x200", class:"img" %>
 					<% end %>
 					<%= image.attachment_field :image, class:"file image--button" %>
 				<% end %>
