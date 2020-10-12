@@ -78,7 +78,7 @@ document.addEventListener("turbolinks:load", function() {
     var reader = new FileReader();
 
     reader.onload = function() {
-    	$(`.preview_${id} img`).attr('src', reader.result);
+    	$('.preview_${id} img').attr('src', reader.result);
     }
     reader.readAsDataURL(file);
   });
