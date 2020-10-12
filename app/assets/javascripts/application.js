@@ -21,7 +21,7 @@
 
 
 // レシピ画像プレビュー機能
-$(function(){
+document.addEventListener("turbolinks:load", function(){
 	$('.file').on('change', function(){
 		var file = $(this).prop('files')[0];
 		var reader = new FileReader();
@@ -33,7 +33,7 @@ $(function(){
 })
 
 // 材料フォーム追加
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   var count = $('#ingredient-box').length;
     $('#add').on('click', function() {
     var input =
@@ -50,7 +50,7 @@ $(function() {
 });
 
 // 手順フォーム追加
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   var count = $('#step-box').length;
   $('#add2').on('click', function() {
     var input =
