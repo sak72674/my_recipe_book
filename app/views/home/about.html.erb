@@ -1,0 +1,41 @@
+<header>
+  <div class="header">
+    <div>
+      <img src="<%= asset_path "logo.png" %>" class="header--title__logo">
+      <img src="<%= asset_path "title.png" %>" class="header--title__image">
+    </div>
+    <div class="header--icon">
+    	<%= link_to 'ログイン', new_user_session_path, class:"button login--button__secondary-1" %>
+    	<%= link_to '新規登録', new_user_registration_path, class:"button login--button__secondary-2" %>
+    </div>
+  </div>
+</header>
+<div class="about--back">
+	<img src="/assets/img1.jpg">
+	<img src="/assets/img2.jpg">
+	<img src="/assets/img3.jpg">
+	<img src="/assets/img4.jpg">
+</div>
+	<div class="about--head">
+		<p class="about--head__left">あのレシピどこのサイトのだったっけ？</p>
+		<p class="about--head__right">あの時書き留めたレシピどこにやったっけ？</p>
+		<p class="about--head__center"><span>My Recipe Book</span> で全部まとめよう。</p>
+	</div>
+</div>
+<div class="about--contents">
+	<div class="about--contents__item">
+		<i class="fas fa-utensils"></i>
+		<h4>レシピを登録</h4>
+		<p>自分で作ったレシピを登録できます。作ったレシピは公開か非公開か選ぶことができます。公開したレシピは他の人からも閲覧できるでシェアしたいレシピはどんどん公開しちゃおう。</p>
+	</div>
+	<div class="about--contents__item">
+		<i class="fas fa-bookmark"></i>
+		<h4>ブックマークを登録</h4>
+		<p>どこかのサイトから見つけたレシピをブックマーク登録できます。URLとジャンル、自分がわかりやすい名前を登録すことで、目次からすぐに目的のレシピを見つけることができます。</p>
+	</div>
+	<div class="about--contents__item">
+		<i class="fas fa-star"></i>
+		<h4>お気に入り</h4>
+		<p>公開されたレシピをお気に入り登録することができます。お気に入りに登録しておくと、お気に入り表示ボタンから簡単に自分がお気に入りしたレシピを見つけることができます。</p>
+	</div>
+</div>

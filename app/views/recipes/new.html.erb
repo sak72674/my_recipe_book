@@ -1,0 +1,13 @@
+<div class="contents">
+	<h2 class="contents--head">レシピ新規登録</h2>
+	<% if @recipe.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <% @recipe.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+	<%= render 'recipe_form', recipe: @recipe %>
+</div>

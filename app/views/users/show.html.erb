@@ -1,0 +1,33 @@
+<div class="contents">
+	<div class="mypage mypage--left">
+		<!-- お気に入りした投稿の表示 -->
+		<div class="mypage--head">
+			<div>
+				<%= button_to 'お気に入り', {action: 'favorite'}, remote: true, method: :get, class:"btn btn__1" %>
+			</div>
+			<!-- ジャンル検索 -->
+			<div class="mypage--search">
+				<%= search_form_for @search, remote: true, url: users_path do |f| %>
+					<%= f.collection_select :genre_id_eq, @genres, :id, :name, {include_blank: "ジャンル検索"}, {class:"form mypage--search__form"} %>
+					<%= f.submit '検索', class:"btn btn__2" %>
+				<% end %>
+			</div>
+		</div>
+
+		<div id="search" class="mypage--post">
+			<%= render 'search', recipes: @recipes %>
+		</div>
+	</div>
+
+	<div class="mypage mypage--rigth">
+		<% @genres.each do |genre| %>
+			<div class="mypage--genre">
+				<%= link_to genre.name, recipes_path(genre_id: genre.id) %>
+			</div>
+		<% end %>
+		<div class="new--button">
+			<%= link_to 'レシピ新規作成', new_recipe_path, class:"button wrap--button__secondary-1" %>
+			<%= link_to 'ブックマーク新規登録', new_bookmark_path, class:"button wrap--button__secondary-2" %>
+		</div>
+	</div>
+</div>

@@ -73,8 +73,11 @@ gem 'font-awesome-sass', '~> 5.4.1'
 
 gem 'ransack'
 
-gem "nested_form"
-
 gem 'jquery-rails'
 
 gem 'pry-byebug'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
