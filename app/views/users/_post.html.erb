@@ -1,0 +1,16 @@
+<div class="post--image">
+	<% recipe.images.each do |image| %>
+		<%= attachment_image_tag image, :image, fallback:"no.jpeg", size: "500x375" %>
+	<% end %>
+</div>
+<div class="post--item">
+	<div class="post--item__name">
+		<%= link_to recipe.name, recipe_path(recipe) %>
+	</div>
+	<div class="post--item__intro">
+		<%= recipe.introduction %>
+	</div>
+	<div class="post--item__favo">
+		<%= render 'favorites/favorite', recipe: recipe %>
+	</div>
+</div>

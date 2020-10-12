@@ -1,0 +1,28 @@
+<div class="contents">
+	<div>
+		<h2 class="contents--head index--head">
+			<% if @genre %>
+				<%= @genre.name %>
+			<% else %>
+				レシピ
+			<% end %>
+				一覧
+		</h2>
+	</div>
+	<div class="index index__secondary-1">
+		<% @recipes.each do |recipe| %>
+			<div class="index--item">
+				<%= link_to recipe.name, recipe_path(recipe) %>
+			</div>
+		<% end %>
+	</div>
+	<div class="index index__secondary-2">
+		<span>（ブックマーク一覧）</span>
+		<% @bookmarks.each do |bookmark| %>
+			<div class="index--item">
+				<%= link_to bookmark.name, bookmark_path(bookmark) %>
+			</div>
+		<% end %>
+	</div>
+	<%= paginate @recipes %>
+</div>

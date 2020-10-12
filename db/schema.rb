@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_060405) do
+ActiveRecord::Schema.define(version: 2020_10_06_152249) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "genre_id", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_060405) do
     t.string "site", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -36,15 +37,14 @@ ActiveRecord::Schema.define(version: 2020_09_20_060405) do
 
   create_table "images", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.integer "step_id", null: false
-    t.integer "image_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.string "ingredient", null: false
+    t.string "name", null: false
     t.string "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,9 +62,16 @@ ActiveRecord::Schema.define(version: 2020_09_20_060405) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "step_images", force: :cascade do |t|
+    t.integer "step_id", null: false
+    t.string "step_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "steps", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.text "step", null: false
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
