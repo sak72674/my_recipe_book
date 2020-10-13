@@ -27,6 +27,15 @@
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/12a9230S_147BhlMvm0I2iRZ-u09cl4Zbvp_26Pa2yNE/edit#gid=0
 
+### テーブル定義書
+https://docs.google.com/spreadsheets/d/1iJak-ARE67w4YIh-XrWRkdzFJOdHyhoB2ytW7dMSE2A/edit#gid=0
+
+### アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1OjT2HUJEBhijoUeSKiKwkPLe3b4SoL1q2IXZxzKc-uY/edit#gid=0
+
+### 参考資料
+https://docs.google.com/spreadsheets/d/1tbbt8PNDIQuNhFSs381jPYeuNAPb6PaWdTthG_RXnUc/edit?usp=sharing
+
 ## 開発環境
 - OS：macOS(Catalina)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
