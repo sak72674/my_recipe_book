@@ -10,7 +10,7 @@
 		</div>
 		<div class="detail--image">
 			<% @recipe.images.each do |image| %>
-				<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200" %>
+				<%= attachment_image_tag image, :image, fallback: asset_path('no.jpg'), size:"280x200" %>
 			<% end %>
 		</div>
 
