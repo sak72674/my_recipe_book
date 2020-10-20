@@ -10,10 +10,6 @@
 		</div>
 		<div class="detail--image">
 			<% @recipe.images.each do |image| %>
-<<<<<<< HEAD
-				<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200" %>
-			<% end %>
-=======
 				<%= attachment_image_tag image, :image, fallback: asset_path('no.jpg'), size:"280x200" %>
 			<% end %>
 			<div class="detail--tag">
@@ -21,7 +17,6 @@
 				  <span><%= tag.name %></span>
 				<% end %>
 			</div>
->>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 		</div>
 
 		<h3 class="group--form__head">材料<span>（<%= @recipe.how_many %>人分）</span></h3>

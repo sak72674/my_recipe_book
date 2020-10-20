@@ -1,10 +1,6 @@
 <div class="post--image">
 	<% recipe.images.each do |image| %>
-<<<<<<< HEAD
-		<%= attachment_image_tag image, :image, fallback:"no.jpeg", size: "500x375" %>
-=======
 		<%= attachment_image_tag image, :image, fallback: asset_path('no.jpg'), size: "500x375" %>
->>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 	<% end %>
 </div>
 <div class="post--item">
