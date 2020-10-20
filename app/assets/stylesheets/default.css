@@ -374,6 +374,18 @@ body {
 	display: inline-block;
 }
 
+.detail--tag {
+	text-align: right;
+}
+
+.detail--tag span {
+	border: solid 1px #ddd;
+	border-radius: 3px;
+	background-color: #ddd;
+	padding: 1px;
+	margin: 0 2px;
+}
+
 .detail--ingredients {
 	width: 90%;
 	height: 400px;
