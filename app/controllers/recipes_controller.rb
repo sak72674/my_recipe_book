@@ -24,6 +24,13 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.new(recipe_params)
 		@recipe.user_id = current_user.id
 		if @recipe.save
+			tags = []
+			@recipe.images.each do |image|
+				tags = Vision.get_image_data(image)
+			end
+	    tags.each do |tag|
+	      @recipe.tags.create(name: tag)
+	    end
 			redirect_to recipe_path(@recipe)
 		else
 			render :new

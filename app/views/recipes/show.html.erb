@@ -12,6 +12,11 @@
 			<% @recipe.images.each do |image| %>
 				<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200" %>
 			<% end %>
+			<div class="detail--tag">
+				<% @recipe.tags.each do |tag| %>
+				  <span><%= tag.name %></span>
+				<% end %>
+			</div>
 		</div>
 
 		<h3 class="group--form__head">材料<span>（<%= @recipe.how_many %>人分）</span></h3>
