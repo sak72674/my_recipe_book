@@ -15,7 +15,11 @@
 			<%= f.fields_for :images do |image| %>
 				<%= image.label :image do %>
 					<% recipe.images.each do |image| %>
+<<<<<<< HEAD
 						<%= attachment_image_tag image, :image, fallback: "no.jpeg", size:"280x200", class:"img" %>
+=======
+						<%= attachment_image_tag image, :image, fallback: asset_path('no.jpg'), size:"280x200", class:"img" %>
+>>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 					<% end %>
 					<%= image.attachment_field :image, class:"file image--button" %>
 				<% end %>
@@ -66,7 +70,11 @@
 								<div id="step-image-field[0]" class="group--step-form__image preview_0">
 									<%= s.fields_for :step_images do |si| %>
 										<%= si.label :step_image, {for:"recipe_steps_attributes_0_step_images_attributes_0_step_image"} do %>
+<<<<<<< HEAD
 											<%= image_tag 'no.jpeg', height:"80px", class:"step-img" %>
+=======
+											<%= image_tag asset_path('no.jpg'), height:"80px", class:"step-img" %>
+>>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 											<%= si.attachment_field :step_image, name:"recipe[steps_attributes][0][step_images_attributes][0][step_image]", id:"recipe_steps_attributes_0_step_images_attributes_0_step_image", class:"step-file image--button img-0" %>
 										<% end %>
 									<% end %>

@@ -374,6 +374,21 @@ body {
 	display: inline-block;
 }
 
+<<<<<<< HEAD
+=======
+.detail--tag {
+	text-align: right;
+}
+
+.detail--tag span {
+	border: solid 1px #ddd;
+	border-radius: 3px;
+	background-color: #ddd;
+	padding: 1px;
+	margin: 0 2px;
+}
+
+>>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 .detail--ingredients {
 	width: 90%;
 	height: 400px;
