@@ -12,4 +12,13 @@ class UsersController < ApplicationController
 		@favorite_recipes = current_user.favorite_recipes.order(created_at: :desc)
 	end
 
+<<<<<<< HEAD
+=======
+	private
+
+	def user_params
+		params.require(:user).permit(:name, :email)
+	end
+
+>>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 end

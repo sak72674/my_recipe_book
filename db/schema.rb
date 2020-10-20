@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2020_10_06_152249) do
+=======
 ActiveRecord::Schema.define(version: 2020_10_20_115127) do
+>>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "genre_id", null: false
@@ -75,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_115127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+<<<<<<< HEAD
+=======
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
@@ -82,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_115127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+>>>>>>> d24b27f59459ed766c42617af8c3ec61a5b447de
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
