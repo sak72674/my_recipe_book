@@ -26,7 +26,9 @@ class RecipesController < ApplicationController
 		if @recipe.save
 			tags = []
 			@recipe.images.each do |image|
-				tags = Vision.get_image_data(image)
+				if image.image_id.present?
+					tags = Vision.get_image_data(image)
+				end
 			end
 	    tags.each do |tag|
 	      @recipe.tags.create(name: tag)
@@ -48,6 +50,16 @@ class RecipesController < ApplicationController
 	def update
 		@recipe = Recipe.find(params[:id])
 		if @recipe.update(recipe_params)
+			@recipe.tags.destroy_all
+			tags = []
+			@recipe.images.each do |image|
+				if image.image_id.present?
+					tags = Vision.get_image_data(image)
+				end
+			end
+	    tags.each do |tag|
+	      @recipe.tags.create(name: tag)
+	    end
 			redirect_to recipe_path(@recipe)
 		else
 			render :edit
