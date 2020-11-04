@@ -37,7 +37,7 @@ https://docs.google.com/spreadsheets/d/1OjT2HUJEBhijoUeSKiKwkPLe3b4SoL1q2IXZxzKc
 https://docs.google.com/spreadsheets/d/1tbbt8PNDIQuNhFSs381jPYeuNAPb6PaWdTthG_RXnUc/edit?usp=sharing
 
 ## 開発環境
-- OS：macOS(Catalina)
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
