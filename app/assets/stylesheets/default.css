@@ -579,5 +579,71 @@ body {
 
 
 @media screen and (max-width:768px) {
-
+	.button {
+		font-size: 14px;
+	  padding: 1rem 2rem;
 	}
+
+	.header {
+		width: 95%;
+	}
+
+	.header--title__logo {
+		height: 40px;
+	}
+
+	.header--title__image {
+		height: 40px;
+	}
+
+	.header--icon {
+		line-height: 40px;
+		font-size: 18px;
+	}
+
+	.home--title h2 {
+		font-size: 32px;
+	}
+
+	.home--title p {
+		font-size: 14px;
+	}
+
+	.login--button__secondary-1 {
+		margin: 0;
+	}
+
+	.login--button__secondary-2 {
+		margin: 0;
+	}
+
+	.about--head__left {
+		text-align: left;
+		font-size: 12px;
+	}
+
+	.about--head__right {
+		text-align: right;
+		font-size: 12px;
+	}
+
+	.about--head__center {
+		font-size: 22px;
+		padding-top: 2%;
+	}
+
+	.about--contents {
+		display: block;
+		margin: 6% auto;
+	}
+
+	.about--contents__item {
+		width: 100%;
+		text-align: center;
+	}
+
+	.about--contents__item i {
+		font-size: 38px;
+	}
+
+}
