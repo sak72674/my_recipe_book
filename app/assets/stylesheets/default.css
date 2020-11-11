@@ -596,6 +596,11 @@ body {
 		height: 40px;
 	}
 
+	.header--title__item {
+    line-height: 40px;
+    font-size: 20px;
+	}
+
 	.header--icon {
 		line-height: 40px;
 		font-size: 18px;
@@ -644,6 +649,68 @@ body {
 
 	.about--contents__item i {
 		font-size: 38px;
+	}
+
+	.contents {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.mypage {
+		width: 100%;
+		float: none;
+	}
+
+	.mypage--left {
+		order: 1;
+	}
+
+	.mypage--rigth {
+		order: 0;
+	}
+
+	.group {
+		float: none;
+		width: 100%;
+	}
+
+	.group--form__image img {
+		object-fit: cover;
+		height: 170px;
+		width:100%;
+	}
+
+	.scroll__secondary-1 {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.scroll__secondary-1 .form {
+		width: 130px;
+	}
+
+	.scroll__secondary-2 {
+		width: 100%;
+		height: 480px;
+		margin-left: 0;
+	}
+
+	.group--button__secondary-1 {
+		margin: 15px;
+	}
+
+	.index {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.detail--ingredients {
+		width: 100%;
+	}
+
+	.detail--steps {
+		width: 100%;
 	}
 
 }
